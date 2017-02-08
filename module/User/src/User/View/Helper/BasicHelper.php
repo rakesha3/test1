@@ -20,4 +20,7 @@ class BasicHelper extends AbstractHelper
 	public function capitalizeString($str){
 		return ucwords($str);
 	}
+    public function testFunction(){
+        
+    }
 }
