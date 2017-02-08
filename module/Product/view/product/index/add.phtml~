@@ -1,0 +1,28 @@
+<div class="row">
+<div class="col-sm-6">
+
+<form action="<?php echo $this->url('home')?>products/add" method="post">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" id="name" name="name" value="<?php echo @$formData['name']?>">
+  </div>
+  <div class="form-group">
+    <label for="price">Price:</label>
+    <input type="text" class="form-control" id="price" name="price" value="<?php echo @$formData['price']?>">
+  </div>
+  <div class="form-group">
+    <label for="user_id">User:</label>
+    <select name="user_id" class="form-control">
+    <option value="">Select User</option><?php print_r($formData);?>
+    <?php foreach($users as $user_key=>$user_data){?>
+    <option value="<?php echo $user_key?>" <?php echo (isset($formData['user_id']) && $formData['user_id']==$user_key)?'selected="selected"':""?>><?php echo $user_data['first_name']." ".$user_data['last_name']?></option>
+    <?php }?>
+    </select>
+    
+  </div>
+
+  <input type="hidden" name="id" value="<?php echo @$formData['id']?>">
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+</div>

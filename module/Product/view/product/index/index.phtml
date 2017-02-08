@@ -1,0 +1,24 @@
+<a href="<?php echo $this->url('home') ?>products/add"><button type="button" class="btn btn-primary">Add</button></a>
+<table class="table">
+    <thead>
+      <tr>
+        <th><?php echo $this->plugin('BasicHelper')->capitalizeString('name');?></th>
+        <th><?php echo $this->plugin('BasicHelper')->capitalizeString('user name');?></th>
+        <th>Price</th>
+	<th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+	<?php foreach($products as $id=>$product){?>      
+	<tr>
+        <td><?php echo @$product['name']?></td>
+        <td><?php if(isset($product['user_id']) && $product['user_id']!="") echo @$users[$product['user_id']]?></td>
+        <td><?php echo @$product['price']?></td>
+	<td>
+		<a href="<?php echo $this->url('home')?>products/add/<?php echo $id?>">Edit</a>
+		<a href="<?php echo $this->url('home')?>products/delete/<?php echo $id?>" onclick="return confirm('Are You sure?')">Delete</a>
+	</td>
+      </tr>
+      <?php }?>
+    </tbody>
+  </table>
