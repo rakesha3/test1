@@ -32,7 +32,6 @@ class IndexController extends AbstractActionController
 		return new ViewModel(array('products'=>$products));
 	}
 	
-
 	public function addAction() {
 		$formData=array();
 		$plugin = $this->BasicPlugin();
