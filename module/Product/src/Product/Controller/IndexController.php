@@ -45,7 +45,7 @@ class IndexController extends AbstractActionController
 			$file = file_get_contents('public/products.json');
 			$data = json_decode($file,true);
 			unset($file);//prevent memory leaks for large json.
-			if($record_id!=""){
+			if(isset($record_id) && $record_id!=""){
 				$data[$record_id] = $records;
 			}
 			else{
