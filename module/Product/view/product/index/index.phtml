@@ -12,7 +12,7 @@
 	<?php foreach($products as $id=>$product){?>      
 	<tr>
         <td><?php echo @$product['name']?></td>
-        <td><?php if(isset($product['user_id']) && $product['user_id']!="") echo @$users[$product['user_id']]?></td>
+        <td><?php echo $product['user_name']?></td>
         <td><?php echo @$product['price']?></td>
 	<td>
 		<a href="<?php echo $this->url('home')?>products/add/<?php echo $id?>">Edit</a>

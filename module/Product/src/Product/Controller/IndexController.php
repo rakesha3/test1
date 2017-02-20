@@ -16,13 +16,20 @@ class IndexController extends AbstractActionController
 {
 	public function indexAction()
 	{
-		$plugin = $this->BasicPlugin();
-		$users =  $plugin->getUserList();
 		$json_data = file_get_contents('public/products.json');		
-		$products = json_decode($json_data, true); 
-		//$user_json = file_get_contents('public/users.json');		
-		//$users = json_decode($user_json, true);
-		return new ViewModel(array('products'=>$products,'users'=>$users));
+		$products_jsons = json_decode($json_data, true); 
+		$user_json = file_get_contents('public/users.json');		
+		$users = json_decode($user_json, true);//echo "<pre>";print_r($products_jsons);die;
+		$products=array();
+		foreach($products_jsons as $product_key=>$products_json){
+			if(isset($products_json['user_id']) && $products_json['user_id']!="" && array_key_exists($products_json['user_id'], $users))
+				$products_json['user_name'] = $users[$products_json['user_id']]['first_name']." ".$users[$products_json['user_id']]['last_name'];
+			else
+				$products_json['user_name'] = "A Deleted User";
+
+			$products[$product_key] = $products_json;
+		}
+		return new ViewModel(array('products'=>$products));
 	}
 	
 

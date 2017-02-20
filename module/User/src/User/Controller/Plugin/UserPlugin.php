@@ -3,7 +3,7 @@ namespace User\Controller\Plugin;
 
 use Zend\Mvc\Controller\Plugin\AbstractPlugin;
 
-class BasicPlugin extends AbstractPlugin{
+class UserPlugin extends AbstractPlugin{
     public function getUserList(){
 	$user_json = file_get_contents('public/users.json');		
 	$users = json_decode($user_json, true);

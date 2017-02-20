@@ -5,17 +5,18 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
-	<th>Action</th>
+	      <th>Action</th>
       </tr>
     </thead>
     <tbody>
-	<?php foreach($users as $id=>$user){?>      
+	<?php foreach($users as $id=>$user){$user['id']=$id;?>      
 	<tr>
         <td><?php echo @$user['first_name']?></td>
         <td><?php echo @$user['last_name']?></td>
         <td><?php echo @$user['email']?></td>
 	<td>
-		<a href="<?php echo $this->url('home')?>users/add/<?php echo $id?>">Edit</a>
+		<a href="javascript:;">Edit</a>
+    <input type="hidden" value="<?php echo json_encode($user)?>">
 		<a href="<?php echo $this->url('home')?>users/delete/<?php echo $id?>" onclick="return confirm('Are You sure?')">Delete</a>
 	</td>
       </tr>

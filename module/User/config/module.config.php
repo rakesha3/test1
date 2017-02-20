@@ -103,7 +103,7 @@ return array(
     ),
     'controller_plugins' => array(
        'invokables' => array(
-       	     'BasicPlugin' => 'User\Controller\Plugin\BasicPlugin',
+       	     'BasicPlugin' => 'User\Controller\Plugin\UserPlugin',
        )
     ),
     'view_helpers' => array(

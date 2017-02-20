@@ -43,6 +43,7 @@ class IndexController extends AbstractActionController
 	public function addAction() {
 		$formData=array();
 		$id = $this->params()->fromRoute('id');
+		$data = json_decode(base64_decode($id),true);
 		if($this->getRequest()->isPost()){
 			$records = $this->getRequest()->getPost()->toArray();
 			$record_id = $records['id'];
@@ -63,12 +64,12 @@ class IndexController extends AbstractActionController
 			return $this->redirect()->toRoute('users');
 		}
 		else{
-			if($id!=""){
-				$json_data = file_get_contents('public/users.json');		
-				$users = json_decode($json_data, true);
-				unset($json_data);			
-				$formData = $users[$id];
-				$formData['id'] = $id;
+			if($data['id']!=""){
+				//$json_data = file_get_contents('public/users.json');		
+				//$users = json_decode($json_data, true);
+				//unset($json_data);			
+				$formData = $data;
+				$formData['id'] = $data['id'];
 				unset($users);//release memory
 			}
 			

@@ -21,6 +21,7 @@ class BasicHelper extends AbstractHelper
 		return ucwords($str);
 	}
     public function testFunction(){
+
         
     }
 }
