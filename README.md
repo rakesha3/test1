@@ -117,3 +117,4 @@ it should look something like below:
 
 Restart the nginx, now you should be ready to go!
 # test1
+# test2
